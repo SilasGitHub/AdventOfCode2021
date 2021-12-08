@@ -1,14 +1,11 @@
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Solution71 {
     public static void main(String[] args) throws FileNotFoundException {
         Scanner sc = new Scanner(new File("/Users/degra/Documents/AoC/2021/Day 7/input.txt"));
-        List<Integer> horPos = new ArrayList<>();
+        List<Integer> horPos = new LinkedList<>();
         for (String string : sc.nextLine().split(",")) {
             horPos.add(Integer.parseInt(string));
         }
