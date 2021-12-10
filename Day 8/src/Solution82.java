@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Solution82 {
     public static void main(String[] args) throws FileNotFoundException {
-        Scanner sc = new Scanner(new File("/Users/degra/Documents/AoC/2021/Day 8/input.txt"));
+        Scanner sc = new Scanner(new File("Day 8/input.txt"));
         List<WireSegmentCombination> combis = new ArrayList<>();
         while (sc.hasNextLine()) {
             combis.add(new WireSegmentCombination(sc.nextLine()));
