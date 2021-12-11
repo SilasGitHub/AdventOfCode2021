@@ -1,9 +1,9 @@
 import java.util.*;
 
 public class OctoMap {
-    private List<Octopus> octopusList = new ArrayList<>();
-    private int maxX;
-    private int maxY;
+    private final List<Octopus> octopusList = new ArrayList<>();
+    private final int maxX;
+    private final int maxY;
     private long numOfFlashes = 0;
     private boolean allOctosFlashed = false;
 
@@ -31,6 +31,7 @@ public class OctoMap {
         for (Octopus octo : octopusList) {
             if (octo.getValue() > 9) {
                 toFlash = true;
+                break;
             }
         }
         return toFlash;
