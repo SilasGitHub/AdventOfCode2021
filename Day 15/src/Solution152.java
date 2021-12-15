@@ -12,6 +12,7 @@ public class Solution152 {
             input.add(sc.nextLine());
         }
         Maze maze = new Maze(input);
+        System.out.println("enlarging");
         maze.enlarge();
         System.out.println("enlarging done");
         while (true) {
@@ -19,6 +20,7 @@ public class Solution152 {
                 break;
             }
         }
+        System.out.println("paths calculated, least risk: ");
         System.out.println(maze.lowestRisk());
     }
 }

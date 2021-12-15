@@ -29,7 +29,6 @@ public class Maze {
         List<Octopus> newPositions = new ArrayList<>();
         for (int j = 0; j < 5; j++) {
             for (int i = 0; i < 5; i++) {
-                System.out.println("x = " + i + ", y = " + j);
                 for (int h = 0; h < positions.size(); h++) {
                     Octopus octo = positions.get(h);
                     int newValue = octo.getValue() + i + j;
