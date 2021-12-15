@@ -1,9 +1,6 @@
 import com.sun.jdi.ObjectCollectedException;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Maze {
     List<Octopus> positions = new ArrayList<>();
@@ -39,10 +36,11 @@ public class Maze {
                     if (newValue > 9) {
                         newValue = newValue % 9;
                     }
-                    fit(new Octopus((octo.getX() + i * (maxX + 1)), (octo.getY() + j * (maxY + 1)), newValue), newPositions);
+                    newPositions.add(new Octopus((octo.getX() + i * (maxX + 1)), (octo.getY() + j * (maxY + 1)), newValue));
                 }
             }
         }
+        Collections.sort(newPositions);
         positions = newPositions;
         maxX = 5 * (maxX + 1) - 1;
         maxY = 5 * (maxY + 1) - 1;
