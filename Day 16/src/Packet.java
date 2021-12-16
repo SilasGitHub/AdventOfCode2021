@@ -1,20 +1,16 @@
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class Packet {
-    private int version;
-    private int typeID;
-    private boolean literal;
+    private final int version;
+    private final int typeID;
     private int length;
     private long value;
 
-    // only for operator packets
-    private int lengthTypeID;
-    private int subPacketLength;
-    private List<Packet> packets = new ArrayList<>();
+    // Only for non-literal packets
+    private final List<Packet> packets = new ArrayList<>();
 
     public Packet(String input, boolean isBinary) {
         if (!isBinary) {
@@ -22,12 +18,13 @@ public class Packet {
         }
         version = Integer.parseInt(input.substring(0, 3), 2);
         typeID = Integer.parseInt(input.substring(3, 6), 2);
-        literal = typeID == 4;
+        boolean literal = typeID == 4;
         if (literal) {
             length = 6;
             value = parseGroups(input.substring(6));
         } else  {
-            lengthTypeID = Integer.parseInt(input.substring(6, 7));
+            int lengthTypeID = Integer.parseInt(input.substring(6, 7));
+            int subPacketLength;
             if (lengthTypeID == 0) {
                 subPacketLength = Integer.parseInt(input.substring(7, 22), 2);
                 int currentLength = 0;
@@ -154,24 +151,14 @@ public class Packet {
         return result;
     }
 
-    // declaring the method to convert
-    // Hexadecimal to Binary
-    String hexToBinary(String hex)
-    {
-
-        // variable to store the converted
-        // Binary Sequence
+    String hexToBinary(String hex) {
         String binary = "";
 
-        // converting the accepted Hexadecimal
-        // string to upper case
         hex = hex.toUpperCase();
 
-        // initializing the HashMap class
         Map<Character, String> hashMap
-                = new HashMap<Character, String>();
+                = new HashMap<>();
 
-        // storing the key value pairs
         hashMap.put('0', "0000");
         hashMap.put('1', "0001");
         hashMap.put('2', "0010");
@@ -192,31 +179,15 @@ public class Packet {
         int i;
         char ch;
 
-        // loop to iterate through the length
-        // of the Hexadecimal String
         for (i = 0; i < hex.length(); i++) {
-            // extracting each character
             ch = hex.charAt(i);
-
-            // checking if the character is
-            // present in the keys
             if (hashMap.containsKey(ch))
-
-                // adding to the Binary Sequence
-                // the corresponding value of
-                // the key
                 binary += hashMap.get(ch);
-
-                // returning Invalid Hexadecimal
-                // String if the character is
-                // not present in the keys
             else {
                 binary = "Invalid Hexadecimal String";
                 return binary;
             }
         }
-
-        // returning the converted Binary
         return binary;
     }
 }
