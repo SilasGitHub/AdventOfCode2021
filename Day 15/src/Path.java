@@ -29,9 +29,9 @@ public class Path {
         }
     }
 
-    public int expectedRisk() {
-        return totalRisk +
-                Math.abs(currentPath.get(currentPath.size() - 1).getX() - finalNode.getX()) +
+    public double expectedRisk() {
+        return totalRisk + 0.5 *
+                Math.abs(currentPath.get(currentPath.size() - 1).getX() - finalNode.getX()) + 0.5 *
                 Math.abs(currentPath.get(currentPath.size() - 1).getY() - finalNode.getY());
     }
 

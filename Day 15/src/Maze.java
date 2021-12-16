@@ -1,5 +1,3 @@
-import com.sun.jdi.ObjectCollectedException;
-
 import java.util.*;
 
 public class Maze {
@@ -60,7 +58,7 @@ public class Maze {
 
     public boolean nextStep() {
         boolean done = false;
-        int leastRisk = Integer.MAX_VALUE;
+        double leastRisk = 100000000.0;
         Path toExpand = new Path(new Octopus(0,0,0), finalNode);
         for (Path path : paths) {
             if (path.expectedRisk() < leastRisk) {
@@ -85,14 +83,26 @@ public class Maze {
         return done;
     }
 
-    public int lowestRisk() {
-        int lowest = Integer.MAX_VALUE;
+    public double lowestRisk() {
+        double lowest = 1000000000.0;
         for (Path path : paths) {
             if (path.isComplete() && path.expectedRisk() < lowest) {
                 lowest = path.expectedRisk();
             }
         }
         return lowest;
+    }
+
+    public Path lowestRiskPath() {
+        double lowest = Integer.MAX_VALUE;
+        Path lowestPath = null;
+        for (Path path : paths) {
+            if (path.isComplete() && path.expectedRisk() < lowest) {
+                lowest = path.expectedRisk();
+                lowestPath = path;
+            }
+        }
+        return lowestPath;
     }
 
     public Octopus getOcto(int x, int y) {
