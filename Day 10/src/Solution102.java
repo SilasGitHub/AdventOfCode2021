@@ -13,7 +13,7 @@ public class Solution102 {
         List<Long> scores = new ArrayList<>();
         while (sc.hasNextLine()) {
             String line = sc.nextLine();
-            Stack<Character> next = new Stack<>();
+            Deque<Character> next = new ArrayDeque<>();
             boolean corrupted = false;
             for (Character c : line.toCharArray()) {
                 if (c == '(') {

@@ -6,7 +6,7 @@ import java.util.Set;
 
 public class Solution172 {
     public static void main(String[] args) throws FileNotFoundException {
-        Scanner sc = new Scanner("target area: x=20..30, y=-10..-5");
+        Scanner sc = new Scanner(new File("Day 17/input.txt"));
         String line = sc.nextLine();
         String[] splitLine = line.split("=|\\.\\.|," );
         Area area = new Area(Integer.parseInt(splitLine[1]), Integer.parseInt(splitLine[2]), Integer.parseInt(splitLine[4]), Integer.parseInt(splitLine[5]));

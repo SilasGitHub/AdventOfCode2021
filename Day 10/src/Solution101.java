@@ -1,9 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
-import java.util.Stack;
+import java.util.*;
 
 public class Solution101 {
     public static void main(String[] args) throws FileNotFoundException {
@@ -16,7 +13,7 @@ public class Solution101 {
         scores.put('>', 25137);
         while (sc.hasNextLine()) {
             String line = sc.nextLine();
-            Stack<Character> next = new Stack<>();
+            Deque<Character> next = new ArrayDeque<>();
             for (Character c : line.toCharArray()) {
                 if (c == '(') {
                     next.add(')');
